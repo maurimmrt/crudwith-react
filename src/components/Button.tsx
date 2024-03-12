@@ -1,10 +1,10 @@
 import { FC, MouseEventHandler, ReactNode } from 'react';
 
-interface Button {
-	className: string;
-	onClick: MouseEventHandler<HTMLButtonElement>;
+type Button = {
+	className?: string;
+	onClick?: MouseEventHandler;
 	children: ReactNode;
-}
+};
 
 export const Button: FC<Button> = ({ className, onClick, children }) => (
 	<button

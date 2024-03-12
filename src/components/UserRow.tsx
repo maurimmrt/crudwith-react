@@ -1,12 +1,13 @@
+import { MouseEventHandler } from 'react';
 import { DeleteIcon, UpdateIcon } from './icons';
 
-interface Props {
+type Props = {
 	user: string;
-	onDelete: () => void;
-	onUpdate: () => void;
-}
+	onDelete: MouseEventHandler;
+	onUpdate: MouseEventHandler;
+};
 
-export const UserRow: React.FC<Props> = ({ user, onDelete, onUpdate }) => {
+export const UserRow = ({ user, onDelete, onUpdate }: Props) => {
 	return (
 		<li className='flex justify-between py-4 px-2 border-b-2'>
 			<span className='my-auto'>{user}</span>

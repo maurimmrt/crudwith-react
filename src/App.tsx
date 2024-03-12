@@ -7,8 +7,7 @@ import { useUsers } from './hooks/';
 export default function App() {
 	const [value, setValue] = useContext(ValueContext)!;
 
-	const { users, indexUser, createUser, updateUser, deleteUser, updatedUser } =
-		useUsers(['Leanne Graham', 'Ervin Howell', 'Clementine Bauch']);
+	const users = useUsers(['Leanne Graham', 'Ervin Howell', 'Clementine Bauch']);
 
 	return (
 		<main className='container my-auto mx-3 sm:m-auto'>
@@ -21,17 +20,17 @@ export default function App() {
 					onChange={(e) => setValue(e.target.value)}
 					value={value}
 				/>
-				{indexUser !== 0 ? (
+				{users.indexUser !== 0 ? (
 					<Button
 						className='bg-green-500 duration-150 text-white rounded-full active:bg-green-600'
-						onClick={updatedUser}
+						onClick={() => users.updated(value)}
 					>
 						<AcceptIcon />
 					</Button>
 				) : (
 					<Button
 						className='bg-indigo-500 duration-150 text-white rounded-full active:bg-indigo-600'
-						onClick={createUser}
+						onClick={() => users.create(value)}
 					>
 						<CreateIcon />
 					</Button>
@@ -39,12 +38,12 @@ export default function App() {
 			</section>
 			<section className='h-80 overflow-auto'>
 				<ul>
-					{users.map((user, id) => (
+					{users.names.map((user, id) => (
 						<UserRow
 							key={id}
 							user={user}
-							onDelete={() => deleteUser(id)}
-							onUpdate={() => updateUser(id)}
+							onDelete={() => users.delete(id)}
+							onUpdate={() => users.updating(id)}
 						/>
 					))}
 				</ul>
