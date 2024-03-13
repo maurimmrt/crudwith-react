@@ -44,4 +44,12 @@ pnpm dev
 
 5. The project is running for development.
 
+### Tests
+
+For run all the tests
+
+```
+pnpm test
+```
+
 _For contributing, just fork the repository and submit your awesome pull request._
